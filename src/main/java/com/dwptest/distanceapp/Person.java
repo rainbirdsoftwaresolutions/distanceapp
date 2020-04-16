@@ -15,8 +15,8 @@ public class Person {
     private final String lastName;
     private final String email;
     private final String ipAddress;
-    private final BigDecimal latitude;
-    private final BigDecimal longitude;
+    private final double latitude;
+    private final double longitude;
 
     @JsonCreator
     public Person( @JsonProperty("id") long id,
@@ -24,8 +24,8 @@ public class Person {
                    @JsonProperty("last_name") String lastName,
                    @JsonProperty("email") String email,
                    @JsonProperty("ip_address") String ipAddress,
-                   @JsonProperty("latitude") BigDecimal latitude,
-                   @JsonProperty("longitude") BigDecimal longitude) {
+                   @JsonProperty("latitude") double latitude,
+                   @JsonProperty("longitude") double longitude) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -58,11 +58,11 @@ public class Person {
         return ipAddress;
     }
 
-    public BigDecimal getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public BigDecimal getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
