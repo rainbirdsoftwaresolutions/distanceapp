@@ -3,6 +3,7 @@ package com.dwptest.distanceapp.dataretrieval;
 import com.dwptest.distanceapp.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,8 @@ public class GetPeopleByCityFromBPDTS implements GetPeopleByCityService {
 
     private RestTemplate restTemplate = new RestTemplate();
 
-    private static final String BPDTS_URL_FORMAT = "https://bpdts-test-app.herokuapp.com/city/%s/users";
+    @Value("${distanceapp.getpeoplebycityurl.format}")
+    private String BPDTS_URL_FORMAT;
     private static final List<Person> EMPTY_RESULT = Collections.emptyList();
 
     private Logger logger = LoggerFactory.getLogger(GetPeopleByCityFromBPDTS.class);

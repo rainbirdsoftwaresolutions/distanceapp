@@ -3,6 +3,7 @@ package com.dwptest.distanceapp.dataretrieval;
 import com.dwptest.distanceapp.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,8 @@ public class GetAllPeopleFromBPDTS implements GetPeopleService {
 
     private RestTemplate restTemplate = new RestTemplate();
 
-    private static final String BPDTS_URL = "https://bpdts-test-app.herokuapp.com/users";
+    @Value("${distanceapp.getallpeopleurl}")
+    private String BPDTS_URL;
     private static final List<Person> EMPTY_RESULT = Collections.emptyList();
 
     private Logger logger = LoggerFactory.getLogger(GetAllPeopleFromBPDTS.class);
@@ -41,9 +43,8 @@ public class GetAllPeopleFromBPDTS implements GetPeopleService {
                 Person[] peopleArray = response.getBody();
                 result = Arrays.asList(peopleArray);
             }
-        } catch (RestClientException rce
-        ) {
-            logger.error("Unsuccessful call to BPDTS datasource when retrieving all users", rce);
+        } catch (RestClientException exception) {
+            logger.error("Unsuccessful call to BPDTS datasource when retrieving all users", exception);
             result = EMPTY_RESULT;
         }
 
