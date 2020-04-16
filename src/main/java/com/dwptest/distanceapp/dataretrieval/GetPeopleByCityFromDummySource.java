@@ -7,12 +7,12 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class GetPeopleByCityFromDummySource implements GetPeopleService {
+public class GetPeopleByCityFromDummySource implements GetPeopleByCityService {
 
     private Person testPerson1 = new Person(1, "John", "Smith", "here@there.com", "127.0.0.1", 0, 0);
 
     @Override
-    public List<Person> getPeople() {
+    public List<Person> getPeople(String cityName) {
         return Arrays.asList(testPerson1);
     }
 }
