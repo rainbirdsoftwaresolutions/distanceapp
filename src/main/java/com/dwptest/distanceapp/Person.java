@@ -1,6 +1,10 @@
 package com.dwptest.distanceapp;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
  * Person bean containing all the information available about them.
@@ -11,10 +15,17 @@ public class Person {
     private final String lastName;
     private final String email;
     private final String ipAddress;
-    private final long latitude;
-    private final long longitude;
+    private final BigDecimal latitude;
+    private final BigDecimal longitude;
 
-    public Person(long id, String firstName, String lastName, String email, String ipAddress, long latitude, long longitude) {
+    @JsonCreator
+    public Person( @JsonProperty("id") long id,
+                   @JsonProperty("first_name") String firstName,
+                   @JsonProperty("last_name") String lastName,
+                   @JsonProperty("email") String email,
+                   @JsonProperty("ip_address") String ipAddress,
+                   @JsonProperty("latitude") BigDecimal latitude,
+                   @JsonProperty("longitude") BigDecimal longitude) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -47,11 +58,30 @@ public class Person {
         return ipAddress;
     }
 
-    public long getLatitude() {
+    public BigDecimal getLatitude() {
         return latitude;
     }
 
-    public long getLongitude() {
+    public BigDecimal getLongitude() {
         return longitude;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return id == person.id &&
+                Objects.equals(firstName, person.firstName) &&
+                Objects.equals(lastName, person.lastName) &&
+                Objects.equals(email, person.email) &&
+                Objects.equals(ipAddress, person.ipAddress) &&
+                Objects.equals(latitude, person.latitude) &&
+                Objects.equals(longitude, person.longitude);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email, ipAddress, latitude, longitude);
     }
 }

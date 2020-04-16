@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DistanceappApplication {
+public class DistanceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DistanceappApplication.class, args);
+		SpringApplication.run(DistanceApplication.class, args);
 	}
 
 }
