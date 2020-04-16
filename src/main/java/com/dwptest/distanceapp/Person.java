@@ -3,7 +3,6 @@ package com.dwptest.distanceapp;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -19,13 +18,13 @@ public class Person {
     private final double longitude;
 
     @JsonCreator
-    public Person( @JsonProperty("id") long id,
-                   @JsonProperty("first_name") String firstName,
-                   @JsonProperty("last_name") String lastName,
-                   @JsonProperty("email") String email,
-                   @JsonProperty("ip_address") String ipAddress,
-                   @JsonProperty("latitude") double latitude,
-                   @JsonProperty("longitude") double longitude) {
+    public Person(@JsonProperty("id") long id,
+                  @JsonProperty("first_name") String firstName,
+                  @JsonProperty("last_name") String lastName,
+                  @JsonProperty("email") String email,
+                  @JsonProperty("ip_address") String ipAddress,
+                  @JsonProperty("latitude") double latitude,
+                  @JsonProperty("longitude") double longitude) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
